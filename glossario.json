@@ -1,0 +1,67 @@
+{
+    "glossario": [
+        {
+            "id": 1,
+            "verbete": "A contento",
+            "significados": [
+                {
+                    "significado": "Diz-se de tudo que se fez satisfatoriamente, ou que se concluiu segundo os próprios desejos anteriormente manifestados."
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "verbete": "Abertura de falência",
+            "significados": [
+                {
+                    "significado": "Ato pelo qual se declara o estado de insolvência de um devedor comerciante e se autoriza o processo de falência correspondente, com a nomeação do síndico, arrecadação dos bens e verificação dos credores etc. A falência se abre no domicílio do devedor ou no lugar em que ele tem o seu principal estabelecimento."
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "verbete": "Abolitio criminis",
+            "significados": [
+                {
+                    "significado": "Expressão latina utilizada em Direito Penal. Significa a extinção do crime devido à publicação de lei que extingue o delito anteriormente previsto no ordenamento jurídico."
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "verbete": "Ab-rogação",
+            "significados": [
+                {
+                    "significado": "É a revogação total de uma lei ou decreto, de uma regra ou regulamento, por uma nova lei, decreto ou regulamento. É ainda a ação de cassar, revogar, tornar nulo ou sem efeito um ato anterior. Em regra, ab-rogação somente ocorre em virtude de lei ou regulamento que venha implantar novos princípios, determinando a anulação ou cassação da lei, regulamento ou costume anteriormente vigentes."
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "verbete": "Abuso de autoridade",
+            "significados": [
+                {
+                    "significado": "Abuso de poder conferido a alguém, seja poder público (administrativo), como poder privado (pátrio poder, poder conjugal)."
+                },
+                {
+                    "significado": " Excesso de limites nas funções administrativas cujas atribuições são definidas e determinadas em lei. "
+                },
+                {
+                    "significado": "Emprego de violência para execução de um ato, que se efetiva sob proteção de um princípio de autoridade. A jurisprudência caracteriza a sua existência, quando ocorrem os seguintes elementos: a) que o fato incriminado constitua crime; b) que o tenha praticado um funcionário público ou pessoa investida de autoridade pública; c) que haja sido cometido no exercício de sua função; d) que não se verifique motivo legítimo, que o justifique. O Código Penal prevê pena de detenção, de um mês a um ano, para quem comete esse crime."
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "verbete": "Abuso de poder",
+            "significados": [
+                {
+                    "significado": "1. Exorbitância dos poderes conferidos. Excesso de mandato. Exercícios de atos não outorgados ou não expressos no mandato ou na procuração."
+                },
+                {
+                    "significado": "Prática de atos que excedem as atribuições conferidas em lei ou que escapam à alçada funcional. Arbitrariedade. A Lei nº 4.898/65 regula o direito de representação e o processo de responsabilidade administrativa civil e penal nos casos de abuso de poder."
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "judic-frontend",
+  "version": "1.0.0",
+  "main": "content.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@webcomponents/custom-elements": "^1.5.1",
+    "json-server": "^0.17.2"
+  }
+}

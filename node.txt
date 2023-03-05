@@ -1,0 +1,8 @@
+npm init --yes
+
+npm install @webcomponents/custom-elements
+
+npm i json-server
+
+no bash
+    json-server --watch glossario.json
