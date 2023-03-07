@@ -80,7 +80,7 @@ class MediumHighlighter extends HTMLElement {
 
         window.getSelection();
         let a = window.getSelection().toString();
-        if (a.endsWith(".")) {
+        if (a.endsWith('.') || a.endsWith(' ')) {
             a = a.slice(0, -1);
             console.log(a);
         } else {
@@ -90,10 +90,15 @@ class MediumHighlighter extends HTMLElement {
     }
 
     async glossario() {
-        let url = 'http://localhost:3000/glossario';
+        //let url = 'http://localhost:3000/glossario';
+        let url = 'http://localhost:8080/glossario';
         let response = await fetch(url);
 
-        var sel = window.getSelection();
+        var sel = window.getSelection().toString();
+        if (sel.endsWith(' ') || sel.endsWith('.')) {
+            sel = sel.slice(0, -1)
+            console.log("eita " + sel);
+        }
 
         //console.log(response.status); // 200
         //console.log(response.statusText); // OK
@@ -104,25 +109,76 @@ class MediumHighlighter extends HTMLElement {
 
             //console.log(data);
 
-            let consulta = url + "?verbete=" + encodeURIComponent(sel);
-
+            let consulta = url + "/" + encodeURIComponent(sel);
             let response2 = await fetch(consulta);
 
             if (response2.status === 200) {
                 let data2 = await response2.json();
 
-                let testeArray = Object.keys(data2);
+                console.log(data2);
+                //alert(data2);
 
-                if (testeArray.length == 0) {
-                    console.log("Definição não encontrada");
+                let content = JSON.stringify(data2, ['content', 'id', 'verbete', 'significados', 'significado']);
+                console.log(content);
+
+                alert(content);
+
+                /* array.forEach((JSON.stringify(data2, ['content', 'id'])) => {
+                    array.add
+                }); */
+
+                let totalElements = JSON.stringify(data2, ['totalElements']);
+                console.log("totalElements " + totalElements);
+
+
+
+
+                /* Object.keys(testeId).forEach(id => {
+                    console.log(id, testeArray[id]);
+                }); */
+
+                /* Object.keys(testeArray).forEach(key => {
+                                    console.log(key, testeArray[key]);
+                                }); */
+
+
+                /*                 let testeArray = Object.keys(data2);
+                                console.log(testeArray);
+                
+                
+                                console.log("a " + testeArray.length); */
+
+
+                /* Object.keys(testeArray).forEach(key => {
+                    console.log(key, testeArray[key]);
+                }); */
+
+
+                /* let testeArray2 = Object.keys(data2).toString;
+                console.log(testeArray2); */
+
+                /* let jsonData = JSON.parse(data2);
+                let t = jsonData["verbete"];
+                console.log(t); */
+
+
+                /* if (testeArray.length == 0) {
+                    console.log("Definição de " + sel + " não encontrada");
+                    alert("Definição de " + sel + " não encontrada");
                 } else {
                     console.log(data2);
-                }
 
+                    let teste85 = JSON.stringify(data2, ['verbete']) + "\n" + JSON.stringify(data2, ['significados', 'significado']);
+                    console.log(teste85);
+
+                    alert(teste85);
+                }
+ */
 
             } else {
                 console.log("Hello darkness my old friend");
             }
+
 
         } else {
             console.log("tururu");
