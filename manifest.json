@@ -10,7 +10,33 @@
             "js": [
                 "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
                 "medium-highlighter.js",
-                "content.js"
+                "content.js",
+                "node_modules/jquery/dist/jquery.min.js",
+                "odh/fg/js/api.js",
+                "odh/fg/js/range.js",
+                "odh/fg/js/text.js",
+                "odh/fg/js/frontend.js",
+                "odh/fg/js/popup.js"
+            ],
+            "css": [
+                "odh/fg/css/client.css",
+                "odh/fg/css/frame.css",
+                "odh/fg/css/spell.css"
+            ]
+        }
+    ],
+    "minimum_chrome_version": "50.0.0.0",
+    "action": {
+        "default_popup": "odh/bg/popup.html"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "odh/bg/background.html",
+                "odh/bg/sandbox/sandbox.html"
+            ],
+            "matches": [
+                "<all_urls>"
             ]
         }
     ]

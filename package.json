@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "@webcomponents/custom-elements": "^1.5.1",
+    "jquery": "^3.6.4",
     "json-server": "^0.17.2"
   }
 }
