@@ -14,7 +14,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const notification = document.getElementsByClassName('acho-notification')[0];
     const notificationText = notification.getElementsByTagName('p')[0];
 
-    notificationText.innerHTML = "significado";
+    const glossario = new Glossario();
+    notificationText.innerHTML = "teste: " + glossario.getSignificado;
+    //`significado ${glossario.getSignificado()}`
+    //console.log(glossario.getSignificado.toString);
 
     notification.style.display = 'flex';
 
