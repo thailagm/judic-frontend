@@ -107,7 +107,7 @@ class MediumHighlighter extends HTMLElement {
                 console.log("totalElements " + totalElements);
 
                 let content = JSON.stringify(data2, ['content', 'verbete', 'significados', 'significado']);
-                console.log(content);
+                //console.log(content);
                 //console.log('content = ' + typeof content);
 
                 //alert(content);
@@ -127,10 +127,11 @@ class MediumHighlighter extends HTMLElement {
     }
 
     async formataConteudo() {
-        const original = await this.selecaoVerbete();
+        var original = await this.selecaoVerbete();
         console.log('original = ' + typeof original);
 
-        const regexContent = /\{\"content\"\:/;
+        //content e verbete
+        const regexContent = /\{\"content\"\:\[\{\"verbete\"\:\"/;
         console.log('regexContent = ' + typeof regexContent);
 
         /* //const sContent = '\{\"content\"\: \[\{';
@@ -142,9 +143,39 @@ class MediumHighlighter extends HTMLElement {
         //formatContent = JSON.parse(formatContent);
         console.log('formatContent = ' + typeof formatContent); */
 
-        replaceOriginalContent = original.replace(regexContent, '');
+        original = original.replace(regexContent, '');
         //console.log(typeof replaceOriginal);
-        console.log(replaceOriginalContent);
+        //console.log(replaceOriginalContent);
+
+        //significados
+        const regexSignificados = /\"\,\"significados\"\:\[\{\"significado\"\:\"/g;
+        original = original.replace(regexSignificados, '\n');
+        //console.log(typeof replaceOriginal);
+        //console.log(replaceOriginalSignificados);
+
+        //significado
+        const regexSignificado = /\"\}\,\{\"significado\"\:\"/g;
+        original = original.replace(regexSignificado, '\n');
+        //console.log(typeof replaceOriginal);
+        //console.log(original);
+
+        // verbete
+
+        const regexVerbete = /\"\}\]\}\,\{\"verbete\"\:\"/g;
+        original = original.replaceAll(regexVerbete, '\n\n');
+        //console.log(original);
+
+        //* /fechamento
+        const regexFechamento = /\"\}\]\}\]\}/g;
+        original = original.replace(regexFechamento, '');
+        console.log(original);
+
+        const formatado = original;
+
+        alert(formatado);
+
+        return formatado;
+
 
     }
 }
