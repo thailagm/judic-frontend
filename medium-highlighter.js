@@ -64,8 +64,8 @@ class MediumHighlighter extends HTMLElement {
         this.shadowRoot
             .getElementById("mediumHighlighter")
             .addEventListener("click", () => {
-                this.highlightSelection();
-                this.glossario();
+                this.selecaoVerbete();
+
             });
     }
 
@@ -75,7 +75,7 @@ class MediumHighlighter extends HTMLElement {
         }
     }
 
-    highlightSelection() {
+    /* highlightSelection() {
         var userSelection = window.getSelection();
 
         window.getSelection();
@@ -86,10 +86,9 @@ class MediumHighlighter extends HTMLElement {
         } else {
             console.log(a);
         }
+    } */
 
-    }
-
-    async glossario() {
+    async selecaoVerbete() {
         //let url = 'http://localhost:3000/glossario';
         let url = 'http://localhost:8080/glossario';
         let response = await fetch(url);
@@ -100,9 +99,6 @@ class MediumHighlighter extends HTMLElement {
             console.log("eita " + sel);
         }
 
-        //console.log(response.status); // 200
-        //console.log(response.statusText); // OK
-
         if (response.status === 200) {
             let data = await response.json();
             // handle data
@@ -112,7 +108,7 @@ class MediumHighlighter extends HTMLElement {
             let consulta = url + "/" + encodeURIComponent(sel);
             let response2 = await fetch(consulta);
 
-            if (response2.status === 200) {
+            try {
                 let data2 = await response2.json();
 
                 console.log(data2);
@@ -123,59 +119,10 @@ class MediumHighlighter extends HTMLElement {
 
                 alert(content);
 
-                /* array.forEach((JSON.stringify(data2, ['content', 'id'])) => {
-                    array.add
-                }); */
-
                 let totalElements = JSON.stringify(data2, ['totalElements']);
                 console.log("totalElements " + totalElements);
 
-
-
-
-                /* Object.keys(testeId).forEach(id => {
-                    console.log(id, testeArray[id]);
-                }); */
-
-                /* Object.keys(testeArray).forEach(key => {
-                                    console.log(key, testeArray[key]);
-                                }); */
-
-
-                /*                 let testeArray = Object.keys(data2);
-                                console.log(testeArray);
-                
-                
-                                console.log("a " + testeArray.length); */
-
-
-                /* Object.keys(testeArray).forEach(key => {
-                    console.log(key, testeArray[key]);
-                }); */
-
-
-                /* let testeArray2 = Object.keys(data2).toString;
-                console.log(testeArray2); */
-
-                /* let jsonData = JSON.parse(data2);
-                let t = jsonData["verbete"];
-                console.log(t); */
-
-
-                /* if (testeArray.length == 0) {
-                    console.log("Definição de " + sel + " não encontrada");
-                    alert("Definição de " + sel + " não encontrada");
-                } else {
-                    console.log(data2);
-
-                    let teste85 = JSON.stringify(data2, ['verbete']) + "\n" + JSON.stringify(data2, ['significados', 'significado']);
-                    console.log(teste85);
-
-                    alert(teste85);
-                }
- */
-
-            } else {
+            } catch {
                 console.log("Hello darkness my old friend");
             }
 

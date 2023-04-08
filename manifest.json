@@ -31,7 +31,8 @@
                 "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
                 "medium-highlighter.js",
                 "content.js",
-                "notification.js"
+                "notification.js",
+                "glossario.js"
             ],
             "css": [
                 "notification.css"
