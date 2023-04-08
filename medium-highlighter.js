@@ -87,7 +87,7 @@ class MediumHighlighter extends HTMLElement {
             console.log("eita " + sel);
         }
 
-        const conteudo;
+        var conteudo;
 
         if (response.status === 200) {
             let data = await response.json();
@@ -133,18 +133,18 @@ class MediumHighlighter extends HTMLElement {
         const regexContent = /\{\"content\"\:/;
         console.log('regexContent = ' + typeof regexContent);
 
-        //const sContent = '\{\"content\"\: \[\{';
+        /* //const sContent = '\{\"content\"\: \[\{';
         const foundContent = original.match(regexContent);
         console.log('foundContent = ' + typeof foundContent);
 
         const formatContent = '';
         console.log('formatContent = ' + typeof formatContent);
         //formatContent = JSON.parse(formatContent);
-        console.log('formatContent = ' + typeof formatContent);
+        console.log('formatContent = ' + typeof formatContent); */
 
-        const replaceOriginal = original.replace(regexContent, '');
-        console.log(typeof replaceOriginal);
-        console.log(replaceOriginal);
+        replaceOriginalContent = original.replace(regexContent, '');
+        //console.log(typeof replaceOriginal);
+        console.log(replaceOriginalContent);
 
     }
 }
