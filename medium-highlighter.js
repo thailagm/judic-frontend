@@ -64,7 +64,8 @@ class MediumHighlighter extends HTMLElement {
         this.shadowRoot
             .getElementById("mediumHighlighter")
             .addEventListener("click", () => {
-                this.selecaoVerbete();
+                //this.selecaoVerbete();
+                this.formataConteudo();
 
             });
     }
@@ -74,19 +75,6 @@ class MediumHighlighter extends HTMLElement {
             this.styleElement.textContent = styled(this.markerPosition);
         }
     }
-
-    /* highlightSelection() {
-        var userSelection = window.getSelection();
-
-        window.getSelection();
-        let a = window.getSelection().toString();
-        if (a.endsWith('.') || a.endsWith(' ')) {
-            a = a.slice(0, -1);
-            console.log(a);
-        } else {
-            console.log(a);
-        }
-    } */
 
     async selecaoVerbete() {
         //let url = 'http://localhost:3000/glossario';
@@ -99,10 +87,11 @@ class MediumHighlighter extends HTMLElement {
             console.log("eita " + sel);
         }
 
+        var conteudo;
+
         if (response.status === 200) {
             let data = await response.json();
             // handle data
-
             //console.log(data);
 
             let consulta = url + "/" + encodeURIComponent(sel);
@@ -111,30 +100,84 @@ class MediumHighlighter extends HTMLElement {
             try {
                 let data2 = await response2.json();
 
-                console.log(data2);
+                //console.log(data2);
                 //alert(data2);
-
-                let content = JSON.stringify(data2, ['content', 'id', 'verbete', 'significados', 'significado']);
-                console.log(content);
-
-                alert(content);
 
                 let totalElements = JSON.stringify(data2, ['totalElements']);
                 console.log("totalElements " + totalElements);
 
+                let content = JSON.stringify(data2, ['content', 'verbete', 'significados', 'significado']);
+                //console.log(content);
+                //console.log('content = ' + typeof content);
+
+                //alert(content);
+                conteudo = content;
+                return conteudo;
+
             } catch {
-                console.log("Hello darkness my old friend");
+                conteudo = 'Hello darkness my old friend';
+                console.log(conteudo);
+                return conteudo;
             }
 
-
         } else {
-            console.log("tururu");
+            conteudo = 'tururu';
+            console.log(conteudo);
         }
-
     }
 
+    async formataConteudo() {
+        var original = await this.selecaoVerbete();
+        console.log('original = ' + typeof original);
+
+        //content e verbete
+        const regexContent = /\{\"content\"\:\[\{\"verbete\"\:\"/;
+        console.log('regexContent = ' + typeof regexContent);
+
+        /* //const sContent = '\{\"content\"\: \[\{';
+        const foundContent = original.match(regexContent);
+        console.log('foundContent = ' + typeof foundContent);
+
+        const formatContent = '';
+        console.log('formatContent = ' + typeof formatContent);
+        //formatContent = JSON.parse(formatContent);
+        console.log('formatContent = ' + typeof formatContent); */
+
+        original = original.replace(regexContent, '');
+        //console.log(typeof replaceOriginal);
+        //console.log(replaceOriginalContent);
+
+        //significados
+        const regexSignificados = /\"\,\"significados\"\:\[\{\"significado\"\:\"/g;
+        original = original.replace(regexSignificados, '\n');
+        //console.log(typeof replaceOriginal);
+        //console.log(replaceOriginalSignificados);
+
+        //significado
+        const regexSignificado = /\"\}\,\{\"significado\"\:\"/g;
+        original = original.replace(regexSignificado, '\n');
+        //console.log(typeof replaceOriginal);
+        //console.log(original);
+
+        // verbete
+
+        const regexVerbete = /\"\}\]\}\,\{\"verbete\"\:\"/g;
+        original = original.replaceAll(regexVerbete, '\n\n');
+        //console.log(original);
+
+        //* /fechamento
+        const regexFechamento = /\"\}\]\}\]\}/g;
+        original = original.replace(regexFechamento, '');
+        console.log(original);
+
+        const formatado = original;
+
+        alert(formatado);
+
+        return formatado;
 
 
+    }
 }
 
 window.customElements.define("medium-highlighter", MediumHighlighter);
