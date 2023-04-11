@@ -111,17 +111,22 @@ class MediumHighlighter extends HTMLElement {
                 //console.log('content = ' + typeof content);
 
                 //alert(content);
-                conteudo = content;
-                return conteudo;
+                if (content.includes('[]')) {
+                    conteudo = 'Verbete não encontrado';
+                    return conteudo;
+                } else {
+                    conteudo = content;
+                    return conteudo;
+                }
 
             } catch {
-                conteudo = 'Hello darkness my old friend';
+                conteudo = 'Verbete não encontrado';
                 console.log(conteudo);
                 return conteudo;
             }
 
         } else {
-            conteudo = 'tururu';
+            conteudo = 'Erro na extensão';
             console.log(conteudo);
         }
     }
